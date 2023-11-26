@@ -1,0 +1,44 @@
+﻿@model TimeManagementLibary.Models.StudyLog
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <h1>Add Study Hours</h1>
+        <h4>StudyLog</h4>
+        <hr />
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="NumberOfHours" class="control-label"></label>
+                <input asp-for="NumberOfHours" class="form-control" />
+                <span asp-validation-for="NumberOfHours" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ModuleCode" class="control-label"></label>
+                <input asp-for="ModuleCode" class="form-control" readonly="readonly" />
+                <span asp-validation-for="ModuleCode" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="SelfStudyDate" class="control-label"></label>
+                <input asp-for="SelfStudyDate" class="form-control" type="date" />
+                <span asp-validation-for="SelfStudyDate" class="text-danger"></span>
+            </div>
+
+            <br/>
+            <div class="form-group text-center">
+                <input type="submit" value="Add Self Study Hours" class="btn btn-primary" />
+            </div>
+        </form>
+
+        <div class="text-center mt-3">
+            <a asp-controller="Modules" asp-action="Index" class="btn btn-secondary">Back to List</a>
+        </div>
+
+    </div>
+</div>
+
+

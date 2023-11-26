@@ -1,0 +1,39 @@
+﻿@model IEnumerable<TimeManagementLibary.Models.Module>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<div class="container">
+    <h1>Index</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-success text-white text-decoration-none">Add Module</a>
+    </p>
+    <div class="row">
+        @foreach (var item in Model)
+        {
+            <div class="col-md-3">
+                <div class="card mb-3 shadow-sm" style="background-color: #f8f9fa;">
+                    <div class="card-header bg-secondary text-white">
+                        Module Name: @Html.DisplayFor(modelItem => item.ModuleName)
+                    </div>
+                    <div class="card-body text-dark">
+                        <h5 class="card-title">Module Code: @Html.DisplayFor(modelItem => item.ModuleCode)</h5>
+                        <p class="card-text">Credits: @Html.DisplayFor(modelItem => item.NumberCredits)</p>
+                        <p class="card-text">Class Hours/Week: @Html.DisplayFor(modelItem => item.ClassHoursPerWeek)</p>
+                        <p class="card-text">Self Study Required: @Html.DisplayFor(modelItem => item.SelfStudyRequired)</p>
+                        <p class="card-text">Remaining Self Study Hours: @Html.DisplayFor(modelItem => item.RemainingSelfStudyHour)</p>
+                    </div>
+                    <div class="card-footer bg-light" style="text-align:center">
+                        <!-- The 'asp-route-modulename' parameter will append 'ModuleName' as a query string -->
+                        <a asp-controller="StudyLogs" asp-action="Create" asp-route-modulecode="@item.ModuleCode" asp-route-modulename="@item.ModuleName" class="btn btn-primary">Add Self Study Hours</a>
+                    </div>
+
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+
