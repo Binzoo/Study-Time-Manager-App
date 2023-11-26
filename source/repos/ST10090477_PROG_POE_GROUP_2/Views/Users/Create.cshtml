@@ -2,67 +2,105 @@
 
 @{
     ViewData["Title"] = "Create Account";
+    Layout = null;
 }
+@{
+    if (ViewData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger">
+            @ViewData["ErrorMessage"]
+        </div>
+    }
+}
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ST10090477_PROG_POE_GROUP_2</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ST10090477_PROG_POE_GROUP_2.styles.css" asp-append-version="true" />
+</head>
 
-<header class="py-1 bg-image-full" style="background-color: black; color:white;">
-    <div class="text-center my-5">
-        <img style="height:150px; width:150px" class="img-fluid rounded-circle mb-4" src="/images/logo.png" alt="..." />
-        <h1 class="text-white fs-3 fw-bolder">Study Time Manager</h1>
-        <p class="text-white-50 mb-0">Maximize Your Minutes, Master Your Studies</p>
-    </div>
-</header>
-<h1 class="text-center mb-4">Create Your Account</h1>
-
-
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <form asp-action="Create" onsubmit="return validatePassword()">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-
-                <div class="form-group">
-                    <label asp-for="Username" class="control-label"></label>
-                    <input asp-for="Username" class="form-control" placeholder="Username" />
-                    <span asp-validation-for="Username" class="text-danger"></span>
+<body style="background-color:black; color:white;">
+    <!-- Responsive navbar-->
+    <header>
+        <nav class="navbar navbar-expand-lg" style="color:white; background-color: black;">
+            <div class="container">
+                <a class="navbar-brand" style="color:white" href="/Home/Index"> <img src="~/images/logo.png" style="height:40px; width:auto;border-radius:34px;margin-right: 10px; " />Study Time Manager</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                        <li class="btn btn-outline-success m-lg-1"> <a style="text-decoration:none" href="/Users/Login">Login in</a> </li>
+                        <li class="btn btn-outline-primary m-lg-1"><a style="text-decoration:none" href="/Users/Create">Sign up</a> </li>
+                    </ul>
                 </div>
+            </div>
+        </nav>
+    </header>
 
-                <div class="form-group">
-                    <label asp-for="Password" class="control-label"></label>
-                    <input asp-for="Password" class="form-control" id="password" placeholder="Password" type="password" />
-                    <span asp-validation-for="Password" class="text-danger"></span>
-                </div>
 
-                <div class="form-group">
-                    <label for="rePassword" class="control-label">Re-Enter Password</label>
-                    <input type="password" class="form-control" id="rePassword" placeholder="Confirm Password" />
-                    <span id="rePasswordError" class="text-danger"></span>
-                </div>
-                <br/>
-                <div class="d-flex justify-content-center mb-4">
-                    <input type="submit" value="Create Account" class="btn btn-primary" />
-                </div>
-                <br/>
-            </form>
+
+    <header class="py-1 bg-image-full" style="background-color: black; color:white;">
+        <div class="text-center my-5">
+            <img style="height:150px; width:150px" class="img-fluid rounded-circle mb-4" src="/images/logo.png" alt="..." />
+            <h1 class="text-white fs-3 fw-bolder">Study Time Manager</h1>
+            <p class="text-white-50 mb-0">Maximize Your Minutes, Master Your Studies</p>
+        </div>
+    </header>
+    <h1 class="text-center mb-4">Create Your Account</h1>
+
+
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <form asp-action="Create" onsubmit="return validatePassword()">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                    <div class="form-group">
+                        <label asp-for="Username" class="control-label"></label>
+                        <input asp-for="Username" class="form-control" placeholder="Username" />
+                        <span asp-validation-for="Username" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label asp-for="Password" class="control-label"></label>
+                        <input asp-for="Password" class="form-control" id="password" placeholder="Password" type="password" />
+                        <span asp-validation-for="Password" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="rePassword" class="control-label">Re-Enter Password</label>
+                        <input type="password" class="form-control" id="rePassword" placeholder="Confirm Password" />
+                        <span id="rePasswordError" class="text-danger"></span>
+                    </div>
+                    <br />
+                    <div class="d-flex justify-content-center mb-4">
+                        <input type="submit" value="Create Account" class="btn btn-primary" />
+                    </div>
+                    <br />
+                </form>
+            </div>
         </div>
     </div>
-</div>
 
-@section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-    <script>
-        function validatePassword() {
-            var password = document.getElementById("password").value;
-            var rePassword = document.getElementById("rePassword").value;
-            var rePasswordError = document.getElementById("rePasswordError");
-
-            if (password != rePassword) {
-                rePasswordError.textContent = "Passwords do not match.";
-                return false;
-            }
-            rePasswordError.textContent = "";
-            return true;
+    @section Scripts {
+        @{
+            await Html.RenderPartialAsync("_ValidationScriptsPartial");
         }
-    </script>
-}
+        <script>
+            function validatePassword() {
+                var password = document.getElementById("password").value;
+                var rePassword = document.getElementById("rePassword").value;
+                var rePasswordError = document.getElementById("rePasswordError");
+
+                if (password != rePassword) {
+                    rePasswordError.textContent = "Passwords do not match.";
+                    return false;
+                }
+                rePasswordError.textContent = "";
+                return true;
+            }
+        </script>
+    }
+
+</body>

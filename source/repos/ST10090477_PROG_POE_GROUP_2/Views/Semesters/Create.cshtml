@@ -4,32 +4,32 @@
     ViewData["Title"] = "Create";
 }
 
-<h1>Create</h1>
 
-<h4>Semester</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <h1 style="text-align:center">Create</h1>
+
+        <h4 style="text-align:center">Semester</h4>
+        <hr />
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="NumberOfWeeksInSemester" class="control-label"></label>
+                <label asp-for="NumberOfWeeksInSemester" class="control-label">Number Of Weeks In Semester</label>
                 <input asp-for="NumberOfWeeksInSemester" class="form-control" />
                 <span asp-validation-for="NumberOfWeeksInSemester" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="StartDateOfSemester" class="control-label"></label>
-                <input asp-for="StartDateOfSemester" class="form-control" />
+                <label asp-for="StartDateOfSemester" class="control-label">Start Date Of Semester</label>
+                <input asp-for="StartDateOfSemester" class="form-control" type="date" />
                 <span asp-validation-for="StartDateOfSemester" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+            <br/>
+            <div class="form-group" style="text-align:center">
+                <input type="submit" value="Add Semester Info" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
+
 

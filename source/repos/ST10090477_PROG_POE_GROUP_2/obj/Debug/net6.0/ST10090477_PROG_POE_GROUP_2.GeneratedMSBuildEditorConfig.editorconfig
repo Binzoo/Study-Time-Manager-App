@@ -44,20 +44,12 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZHlMb2dzXENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/binam/source/repos/ST10090477_PROG_POE_GROUP_2/Views/StudyLogs/Delete.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZHlMb2dzXERlbGV0ZS5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/binam/source/repos/ST10090477_PROG_POE_GROUP_2/Views/StudyLogs/Details.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZHlMb2dzXERldGFpbHMuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/binam/source/repos/ST10090477_PROG_POE_GROUP_2/Views/StudyLogs/Edit.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZHlMb2dzXEVkaXQuY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/binam/source/repos/ST10090477_PROG_POE_GROUP_2/Views/StudyLogs/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZHlMb2dzXEluZGV4LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/binam/source/repos/ST10090477_PROG_POE_GROUP_2/Views/StudyLogs/ShowGraph.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU3R1ZHlMb2dzXFNob3dHcmFwaC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/binam/source/repos/ST10090477_PROG_POE_GROUP_2/Views/Users/Create.cshtml]

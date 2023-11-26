@@ -30,30 +30,37 @@ namespace ST10090477_PROG_POE_GROUP_2.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Username,Password")] User user)
         {
-            await Console.Out.WriteLineAsync(user.Password);
-            if (user.Username != null && user.Password != null)
+            bool usernameExists = await _context.Users.AnyAsync(u => u.Username == user.Username);
+
+            if (!usernameExists)
             {
-                // Generate a salt
-                byte[] salt = new byte[128 / 8];
-                using (var rng = RandomNumberGenerator.Create())
+                // Username exists
+                if (user.Username != null && user.Password != null)
                 {
-                    rng.GetBytes(salt);
+                    // Generate a salt
+                    byte[] salt = new byte[128 / 8];
+                    using (var rng = RandomNumberGenerator.Create())
+                    {
+                        rng.GetBytes(salt);
+                    }
+                    user.Salt = Convert.ToBase64String(salt);
+
+                    // Hash the password
+                    user.Password = Convert.ToBase64String(KeyDerivation.Pbkdf2(
+                        password: user.Password,
+                        salt: salt,
+                        prf: KeyDerivationPrf.HMACSHA256,
+                        iterationCount: 10000,
+                        numBytesRequested: 256 / 8));
+
+                    _context.Add(user);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction("Login"); // Ensure Index action exists
                 }
-                user.Salt = Convert.ToBase64String(salt);
-
-                // Hash the password
-                user.Password = Convert.ToBase64String(KeyDerivation.Pbkdf2(
-                    password: user.Password,
-                    salt: salt,
-                    prf: KeyDerivationPrf.HMACSHA256,
-                    iterationCount: 10000,
-                    numBytesRequested: 256 / 8));
-
-                _context.Add(user);
-                await _context.SaveChangesAsync();
-                return RedirectToAction("Login"); // Ensure Index action exists
             }
-            return View(user);
+            // If we got this far, something failed, redisplay the form with an error message
+            ViewData["ErrorMessage"] = "User already exists, try to login.";
+            return View(); 
         }
 
         public IActionResult Login()
@@ -90,8 +97,6 @@ namespace ST10090477_PROG_POE_GROUP_2.Controllers
                     {
                         return RedirectToAction("Create", "Semesters"); // Redirect to the home page or dashboard
                     }
-                   
-                    
                 }
             }
 

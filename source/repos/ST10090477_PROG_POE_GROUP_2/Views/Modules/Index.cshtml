@@ -4,10 +4,10 @@
     ViewData["Title"] = "Index";
 }
 <div class="container">
-    <h1>Index</h1>
+    <h1 style="text-align:center">Index</h1>
 
-    <p>
-        <a asp-action="Create" class="btn btn-success text-white text-decoration-none">Add Module</a>
+    <p style="text-align:center">
+        <a asp-action="Create" class="btn btn-success text-white text-decoration-none" >Add Module</a>
     </p>
     <div class="row">
         @foreach (var item in Model)
@@ -15,6 +15,7 @@
             <div class="col-md-3">
                 <div class="card mb-3 shadow-sm" style="background-color: #f8f9fa;">
                     <div class="card-header bg-secondary text-white">
+                        
                         Module Name: @Html.DisplayFor(modelItem => item.ModuleName)
                     </div>
                     <div class="card-body text-dark">

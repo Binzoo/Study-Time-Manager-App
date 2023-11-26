@@ -59,5 +59,13 @@ namespace ST10090477_PROG_POE_GROUP_2.Controllers
         {
           return (_context.StudyLogs?.Any(e => e.StudyLogId == id)).GetValueOrDefault();
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult ShowGraph()
+        {
+            
+            return View();
+        }
     }
 }
